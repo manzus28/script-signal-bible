@@ -1,0 +1,439 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: VCU VIRV
+
+
+BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
+ SG_ Dat_tTorch : 24|16@1+ (0.1,0) [0|80] "C" Vector__XXX
+
+BO_ 1 DATRON_ACC: 6 VCU
+ SG_ Dat_Ax : 0|16@1- (0.01,0.01) [-40|40] "m/s^2"  VIRV
+ SG_ Dat_Ay : 16|16@1- (0.01,0) [-40|40] "m/s^2"  VIRV
+ SG_ Dat_Az : 32|16@1- (0.01,0) [-40|40] "m/s^2"  VIRV
+
+BO_ 2 DATRON_ORIENTATION: 4 VCU
+ SG_ Dat_aRoll : 0|16@1- (0.01,0) [-5|5] "rad"  VIRV
+ SG_ Dat_aPitch : 16|16@1- (0.01,0) [-5|5] "rad"  VIRV
+
+BO_ 3 DATRON_VEL: 6 VCU
+ SG_ Dat_wYaw : 0|16@1- (0.01,0) [-5|5] "rad/s"  VIRV
+ SG_ Dat_Vx : 16|16@1+ (0.01,0) [0|35] "m/s"  VIRV
+ SG_ Dat_Vy : 32|16@1+ (0.01,0) [-5|5] "m/s"  VIRV
+
+BO_ 4 DAIMU_ACC_COG: 8 VCU
+ SG_ DAIMUF_Ax_CoG : 0|16@1- (0.01,0) [-40|40] "m/s^2"  VIRV
+ SG_ DAIMUF_Ay_CoG : 16|16@1- (0.01,0) [-40|40] "m/s^2"  VIRV
+ SG_ DAIMUR_Ax_CoG : 32|16@1- (0.01,0) [-40|40] "m/s^2"  VIRV
+ SG_ DAIMUR_Ay_CoG : 48|16@1- (0.01,0) [-40|40] "m/s^2"  VIRV
+
+BO_ 5 DAIMU_YAWRATE_COG: 4 VCU
+ SG_ DAIMUF_wYaw_CoG : 0|16@1- (0.01,0) [-5|5] "rad/s"  VIRV
+ SG_ DAIMUR_wYaw_CoG : 16|16@1- (0.01,0) [-5|5] "rad/s"  VIRV
+
+BO_ 6 VCU_DRIVER_INPUTS: 6 VCU
+ SG_ VCU_perAPPS : 0|16@1+ (1,0) [0|100] "%"  VIRV
+ SG_ VCU_perLoadCell : 16|16@1+ (1,0) [0|100] "%"  VIRV
+ SG_ VCU_aSteering : 32|16@1- (0.1,0) [-115|115] "°"  VIRV
+
+BO_ 7 VCU_MAXON_VOLTAGE: 2 VCU
+ SG_ VCU_Maxon_Voltage : 0|16@1- (0.1,0) [45|60] "V"  VIRV
+
+BO_ 9 TC_TORQUE_LIMIT: 8 VCU
+ SG_ cTC_Tractive_FL : 0|8@1+ (0.125,0) [0|27] "Nm"  VIRV
+ SG_ cTC_Tractive_FR : 8|8@1+ (0.125,0) [0|27] "Nm"  VIRV
+ SG_ cTC_Tractive_RL : 16|8@1+ (0.125,0) [0|27] "Nm"  VIRV
+ SG_ cTC_Tractive_RR : 24|8@1+ (0.125,0) [0|27] "Nm"  VIRV
+ SG_ cTC_Regen_FL : 32|8@1+ (-0.125,0) [-27|0] "Nm"  VIRV
+ SG_ cTC_Regen_FR : 40|8@1+ (-0.125,0) [-27|0] "Nm"  VIRV
+ SG_ cTC_Regen_RL : 48|8@1+ (-0.125,0) [-27|0] "Nm"  VIRV
+ SG_ cTC_Regen_RR : 56|8@1+ (-0.125,0) [-27|0] "Nm"  VIRV
+
+BO_ 8 TC_FF_TORQUE_LIMIT: 8 VCU
+ SG_ cTC_FF_Tractive_FL : 0|8@1+ (0.125,0) [0|27] "Nm"  VIRV
+ SG_ cTC_FF_Tractive_FR : 8|8@1+ (0.125,0) [0|27] "Nm"  VIRV
+ SG_ cTC_FF_Tractive_RL : 16|8@1+ (0.125,0) [0|27] "Nm"  VIRV
+ SG_ cTC_FF_Tractive_RR : 24|8@1+ (0.125,0) [0|27] "Nm"  VIRV
+ SG_ cTC_FF_Regen_FL : 32|8@1+ (-0.125,0) [-27|0] "Nm"  VIRV
+ SG_ cTC_FF_Regen_FR : 40|8@1+ (-0.125,0) [-27|0] "Nm"  VIRV
+ SG_ cTC_FF_Regen_RL : 48|8@1+ (-0.125,0) [-27|0] "Nm"  VIRV
+ SG_ cTC_FF_Regen_RR : 56|8@1+ (-0.125,0) [-27|0] "Nm"  VIRV
+
+BO_ 11 TV_TORQUE_LIMIT: 8 VCU
+ SG_ cTV_Max_FL : 0|8@1+ (0.125,0) [0|27] "Nm"  VIRV
+ SG_ cTV_Max_FR : 8|8@1+ (0.125,0) [0|27] "Nm"  VIRV
+ SG_ cTV_Max_RL : 16|8@1+ (0.125,0) [0|27] "Nm"  VIRV
+ SG_ cTV_Max_RR : 24|8@1+ (0.125,0) [0|27] "Nm"  VIRV
+ SG_ cTV_Min_FL : 32|8@1+ (-0.125,0) [-27|0] "Nm"  VIRV
+ SG_ cTV_Min_FR : 40|8@1+ (-0.125,0) [-27|0] "Nm"  VIRV
+ SG_ cTV_Min_RL : 48|8@1+ (-0.125,0) [-27|0] "Nm"  VIRV
+ SG_ cTV_Min_RR : 56|8@1+ (-0.125,0) [-27|0] "Nm"  VIRV
+
+BO_ 18 MC_SLIP_RATIO: 8 VCU
+ SG_ MC_SlipRatio_FL : 0|16@1- (0.001,0) [-1|5] ""  VIRV
+ SG_ MC_SlipRatio_FR : 16|16@1- (0.001,0) [-1|5] ""  VIRV
+ SG_ MC_SlipRatio_RL : 32|16@1- (0.001,0) [-1|5] ""  VIRV
+ SG_ MC_SlipRatio_RR : 48|16@1- (0.001,0) [-1|5] ""  VIRV
+
+BO_ 14 TV_AUX_HF: 8 VCU
+ SG_ TV_Aux1 : 0|16@1- (1,0) [0|0] ""  VIRV
+ SG_ TV_Aux2 : 16|16@1- (1,0) [0|0] ""  VIRV
+ SG_ TV_Aux3 : 32|16@1- (1,0) [0|0] ""  VIRV
+ SG_ TV_Aux4 : 48|16@1- (1,0) [0|0] ""  VIRV
+
+BO_ 19 MC_VEL_EST: 8 VCU
+ SG_ MC_SlipVelocity_FL : 0|8@1+ (0.02,0) [0|5] "m/s"  VIRV
+ SG_ MC_SlipVelocity_FR : 8|8@1+ (0.02,0) [0|5] "m/s"  VIRV
+ SG_ MC_SlipVelocity_RL : 16|8@1+ (0.02,0) [0|5] "m/s"  VIRV
+ SG_ MC_SlipVelocity_RR : 24|8@1+ (0.02,0) [0|5] "m/s"  VIRV
+ SG_ MC_Vx_Est : 32|16@1+ (0.001,0) [0|35] "m/s"  VIRV
+ SG_ MC_Vy_Est : 48|16@1- (0.001,0) [-5|5] "m/s"  VIRV
+
+BO_ 12 TV_TORQUE_SETPOINT: 8 VCU
+ SG_ cTV_FL : 0|16@1- (0.01,0) [-27|27] "Nm"  VIRV
+ SG_ cTV_FR : 16|16@1- (0.01,0) [-27|27] "Nm"  VIRV
+ SG_ cTV_RL : 32|16@1- (0.01,0) [-27|27] "Nm"  VIRV
+ SG_ cTV_RR : 48|16@1- (0.01,0) [-27|27] "Nm"  VIRV
+
+BO_ 10 TV_MOTOR_EFFICIENCY: 5 VCU
+ SG_ TV_Eta_FL : 0|8@1+ (0.01,0) [0|1] ""  VIRV
+ SG_ TV_Eta_FR : 8|8@1+ (0.01,0) [0|1] ""  VIRV
+ SG_ TV_Eta_RL : 16|8@1+ (0.01,0) [0|1] ""  VIRV
+ SG_ TV_Eta_RR : 24|8@1+ (0.01,0) [0|1] ""  VIRV
+ SG_ TV_SF_Power : 32|8@1+ (0.01,0) [0.6|1.4] ""  VIRV
+
+BO_ 13 TV_POWER_LIMITER: 6 VCU
+ SG_ TV_PMax_Tractive : 0|24@1+ (1,0) [0|80000] "W"  VIRV
+ SG_ TV_PMax_Regen : 24|24@1+ (-1,0) [-100000|0] "W"  VIRV
+
+BO_ 16 TV_YAW_MOMENT: 4 VCU
+ SG_ TV_Mz_Des : 0|16@1- (1,0) [-3000|3000] "Nm"  VIRV
+ SG_ TV_Mz : 16|16@1- (1,0) [-3000|3000] "Nm"  VIRV
+
+BO_ 15 TV_AUX_LF: 8 VCU
+ SG_ TV_Aux5 : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TV_Aux6 : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TV_Aux7 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TV_Aux8 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 17 TV_YAW_DESIRED: 2 VCU
+ SG_ TV_wYaw_Des : 0|16@1- (0.001,0) [-5|5] ""  VIRV
+
+BO_ 21 MC_CAR_POS: 3 VCU
+ SG_ NewSignal_0002 : 0|12@1- (1,0) [-1000|1000] "m"  VIRV
+ SG_ NewSignal_0003 : 12|12@1- (0.1,0) [-1000|1000] "m"  VIRV
+
+BO_ 22 VCU_SHUTDOWN_SENSING: 8 VCU
+ SG_ VCU_vSDC_A : 0|8@1+ (0.1,0) [0|30] "V"  VIRV
+ SG_ VCU_vSDC_B : 8|8@1+ (0.1,0) [0|30] "V"  VIRV
+ SG_ VCU_vSDC_C : 16|8@1+ (0.1,0) [0|30] "V"  VIRV
+ SG_ VCU_vSDC_D : 24|8@1+ (0.1,0) [0|30] "V"  VIRV
+ SG_ VCU_vSDC_E : 32|8@1+ (0.1,0) [0|30] "V"  VIRV
+ SG_ VCU_vSDC_F : 40|8@1+ (0.1,0) [0|30] "V"  VIRV
+ SG_ VCU_SDC_Sensing_StatusWord : 48|8@1+ (1,0) [0|0] "Bitmap"  VIRV
+ SG_ VCU_SDC_StatusWord : 56|8@1+ (1,0) [0|0] "Bitmap"  VIRV
+
+BO_ 23 VCU_CAN_STATUS: 4 VCU
+ SG_ VCU_CAN1_FaultWord : 0|10@1+ (1,0) [0|0] "Bitmap"  VIRV
+ SG_ VCU_CAN2_FaultWord : 10|10@1+ (1,0) [0|0] "Bitmap"  VIRV
+ SG_ VCU_CAN3_FaultWord : 20|10@1+ (1,0) [0|0] "Bitmap"  VIRV
+
+BO_ 24 VCU_APPS: 3 VCU
+ SG_ VCU_perAPPS1 : 0|8@1+ (1,0) [0|100] "%"  VIRV
+ SG_ VCU_perAPPS2 : 8|8@1+ (1,0) [0|100] "%"  VIRV
+ SG_ VCU_perAPPS3 : 16|8@1+ (1,0) [0|100] "%"  VIRV
+
+BO_ 25 VCU_GIT_COMMIT: 8 VCU
+ SG_ VCU_Git_Commit_DataID : 0|16@1+ (1,0) [0|0] ""  VIRV
+ SG_ VCU_Git_Commit_Data : 16|48@1+ (1,0) [0|0] ""  VIRV
+
+BO_ 26 VCU_WHM: 8 VCU
+ SG_ VCU_WM_Half_FaultWord : 0|32@1+ (1,0) [0|0] "Bitmap"  VIRV
+ SG_ VCU_WM_Full_FaultWord : 32|32@1+ (1,0) [0|0] "Bitmap"  VIRV
+
+BO_ 27 VCU_STATUS: 8 VCU
+ SG_ VCU_TSON_DV_StatusWord : 0|5@1+ (1,0) [0|0] "Bitmap" Vector__XXX
+ SG_ VCU_TSON_EV_StatusWord : 5|7@1+ (1,0) [0|0] "Bitmap" Vector__XXX
+ SG_ VCU_Impl_FaultWord : 12|8@1+ (1,0) [0|0] "Bitmap" Vector__XXX
+ SG_ VCU_AC_FaultWord : 20|8@1+ (1,0) [0|0] "Bitmap" Vector__XXX
+ SG_ VCU_TV_FaultWord : 28|8@1+ (1,0) [0|0] "Bitmap" Vector__XXX
+ SG_ VCU_Maxon_Status : 36|8@1+ (1,0) [0|0] "Bitamp" Vector__XXX
+ SG_ TV_Launch_Flag : 44|2@1+ (1,0) [0|1] "Flag" Vector__XXX
+ SG_ TV_Acc_Feedback : 46|9@1+ (1,0) [0|0] "Bitmap" Vector__XXX
+ SG_ TV_Acc_Status : 55|9@1+ (1,0) [0|0] "Bitamp" Vector__XXX
+
+BO_ 28 VCU_INTERNAL: 2 VCU
+ SG_ VCU_tSoC : 0|16@1+ (0.1,0) [0|70] "C"  VIRV
+
+BO_ 29 NCU_INTERNAL: 6 VCU
+ SG_ NCU_perCPU : 0|8@1+ (1,0) [0|100] "%" Vector__XXX
+ SG_ NCU_perGPU : 8|8@1+ (1,0) [0|100] "%" Vector__XXX
+ SG_ NCU_tSoC : 16|16@1+ (0.1,0) [0|115] "C" Vector__XXX
+ SG_ Dat_tTorch : 32|16@1+ (1,0) [0|80] "C" Vector__XXX
+
+BO_ 30 COOLING_STATUS: 3 VCU
+ SG_ PWM_Pumps : 0|8@1+ (1,0) [0|100] "%" Vector__XXX
+ SG_ PWM_Rads : 8|8@1+ (1,0) [0|100] "%" Vector__XXX
+ SG_ PWM_BackPanel : 16|8@1+ (1,0) [0|100] "%" Vector__XXX
+
+BO_ 31 GPS_DATA: 8 VCU
+ SG_ GPS_Lat : 0|32@1- (1,0) [0|0] "*" Vector__XXX
+ SG_ GPS_Lon : 32|32@1- (1,0) [0|0] "*" Vector__XXX
+
+BO_ 35 DAT_STATUS: 2 VCU
+ SG_ Dat_Steady_Flag : 0|2@1+ (1,0) [0|1] "Flag" Vector__XXX
+ SG_ Dat_FaultWord : 2|14@1+ (1,0) [0|0] "Bitmap" Vector__XXX
+
+BO_ 32 MC_ENERGY: 2 VCU
+ SG_ MC_ETS : 0|8@1+ (0.01,0) [0|800] "Wh" Vector__XXX
+ SG_ MC_Ediss_Acc : 8|8@1+ (0.01,0) [0|128] "Wh" Vector__XXX
+
+BO_ 33 VCU_SDC_REASON: 1 VCU
+ SG_ VCU_SDC_ReasonWord : 0|8@1+ (1,0) [0|0] "Bitmap" Vector__XXX
+
+BO_ 20 MC_SPACE_EST: 2 VCU
+ SG_ MC_s_Est : 0|16@1+ (0.01,0) [0|30000] "m" Vector__XXX
+
+BO_ 36 TV_FB: 1 VCU
+ SG_ TV_FB_StatusWord : 0|8@1+ (1,0) [0|0] "Bitamp" Vector__XXX
+
+
+
+CM_ BO_ 1 "100Hz";
+CM_ SG_ 1 Dat_Ax "{}
+";
+CM_ SG_ 1 Dat_Ay "{}
+";
+CM_ SG_ 1 Dat_Az "{}";
+CM_ BO_ 2 "100Hz
+";
+CM_ SG_ 2 Dat_aRoll "{}
+";
+CM_ SG_ 2 Dat_aPitch "{}
+";
+CM_ BO_ 3 "100Hz";
+CM_ SG_ 3 Dat_wYaw "{}";
+CM_ SG_ 3 Dat_Vx "{}";
+CM_ SG_ 3 Dat_Vy "{}";
+CM_ BO_ 4 "100Hz
+";
+CM_ SG_ 4 DAIMUF_Ax_CoG "{}
+";
+CM_ SG_ 4 DAIMUF_Ay_CoG "{}";
+CM_ SG_ 4 DAIMUR_Ax_CoG "{}";
+CM_ SG_ 4 DAIMUR_Ay_CoG "{}";
+CM_ BO_ 5 "100Hz
+";
+CM_ SG_ 5 DAIMUF_wYaw_CoG "{}";
+CM_ SG_ 5 DAIMUR_wYaw_CoG "{}";
+CM_ BO_ 6 "100Hz
+";
+CM_ SG_ 6 VCU_perAPPS "{}";
+CM_ SG_ 6 VCU_perLoadCell "{}";
+CM_ SG_ 6 VCU_aSteering "{}";
+CM_ BO_ 7 "100Hz
+";
+CM_ SG_ 7 VCU_Maxon_Voltage "{}";
+CM_ BO_ 9 "100Hz
+";
+CM_ SG_ 9 cTC_Tractive_FL "{}";
+CM_ SG_ 9 cTC_Tractive_FR "{}";
+CM_ SG_ 9 cTC_Tractive_RL "{}";
+CM_ SG_ 9 cTC_Tractive_RR "{}";
+CM_ SG_ 9 cTC_Regen_FL "{}";
+CM_ SG_ 9 cTC_Regen_FR "{}";
+CM_ SG_ 9 cTC_Regen_RL "{}";
+CM_ SG_ 9 cTC_Regen_RR "{}";
+CM_ BO_ 8 "100Hz
+";
+CM_ SG_ 8 cTC_FF_Tractive_FL "{}";
+CM_ SG_ 8 cTC_FF_Tractive_FR "{}";
+CM_ SG_ 8 cTC_FF_Tractive_RL "{}";
+CM_ SG_ 8 cTC_FF_Tractive_RR "{}";
+CM_ SG_ 8 cTC_FF_Regen_FL "{}";
+CM_ SG_ 8 cTC_FF_Regen_FR "{}";
+CM_ SG_ 8 cTC_FF_Regen_RL "{}";
+CM_ SG_ 8 cTC_FF_Regen_RR "{}";
+CM_ BO_ 11 "100Hz";
+CM_ SG_ 11 cTV_Max_FL "{}";
+CM_ SG_ 11 cTV_Max_FR "{}";
+CM_ SG_ 11 cTV_Max_RL "{}";
+CM_ SG_ 11 cTV_Max_RR "{}";
+CM_ SG_ 11 cTV_Min_FL "{}";
+CM_ SG_ 11 cTV_Min_FR "{}";
+CM_ SG_ 11 cTV_Min_RL "{}";
+CM_ SG_ 11 cTV_Min_RR "{}";
+CM_ BO_ 18 "100Hz
+";
+CM_ SG_ 18 MC_SlipRatio_FL "{}";
+CM_ SG_ 18 MC_SlipRatio_FR "{}";
+CM_ SG_ 18 MC_SlipRatio_RL "{}";
+CM_ SG_ 18 MC_SlipRatio_RR "{}";
+CM_ BO_ 14 "100Hz
+";
+CM_ SG_ 14 TV_Aux1 "{}";
+CM_ SG_ 14 TV_Aux2 "{}";
+CM_ SG_ 14 TV_Aux3 "{}";
+CM_ SG_ 14 TV_Aux4 "{}";
+CM_ BO_ 19 "100Hz
+";
+CM_ SG_ 19 MC_SlipVelocity_FL "{}";
+CM_ SG_ 19 MC_SlipVelocity_FR "{}";
+CM_ SG_ 19 MC_SlipVelocity_RL "{}";
+CM_ SG_ 19 MC_SlipVelocity_RR "{}";
+CM_ SG_ 19 MC_Vx_Est "{}";
+CM_ SG_ 19 MC_Vy_Est "{}";
+CM_ BO_ 12 "100Hz
+";
+CM_ SG_ 12 cTV_FL "{}";
+CM_ SG_ 12 cTV_FR "{}";
+CM_ SG_ 12 cTV_RL "{}";
+CM_ SG_ 12 cTV_RR "{}";
+CM_ BO_ 10 "100Hz
+";
+CM_ SG_ 10 TV_Eta_FL "{}";
+CM_ SG_ 10 TV_Eta_FR "{}";
+CM_ SG_ 10 TV_Eta_RL "{}";
+CM_ SG_ 10 TV_Eta_RR "{}";
+CM_ SG_ 10 TV_SF_Power "{}";
+CM_ BO_ 13 "100Hz
+";
+CM_ SG_ 13 TV_PMax_Tractive "{}
+";
+CM_ SG_ 13 TV_PMax_Regen "{}
+";
+CM_ BO_ 16 "100Hz
+";
+CM_ SG_ 16 TV_Mz_Des "{}
+";
+CM_ SG_ 16 TV_Mz "{}";
+CM_ BO_ 15 "Event
+";
+CM_ SG_ 15 TV_Aux5 "{}";
+CM_ SG_ 15 TV_Aux6 "{}";
+CM_ SG_ 15 TV_Aux7 "{}";
+CM_ SG_ 15 TV_Aux8 "{}";
+CM_ BO_ 17 "50Hz
+";
+CM_ SG_ 17 TV_wYaw_Des "{}";
+CM_ BO_ 21 "20Hz
+";
+CM_ SG_ 21 NewSignal_0002 "{}";
+CM_ SG_ 21 NewSignal_0003 "{}";
+CM_ BO_ 22 "10Hz
+";
+CM_ SG_ 22 VCU_vSDC_A "{}";
+CM_ SG_ 22 VCU_vSDC_B "{}";
+CM_ SG_ 22 VCU_vSDC_C "{}";
+CM_ SG_ 22 VCU_vSDC_D "{}";
+CM_ SG_ 22 VCU_vSDC_E "{}";
+CM_ SG_ 22 VCU_vSDC_F "{}";
+CM_ SG_ 22 VCU_SDC_Sensing_StatusWord "{}
+";
+CM_ SG_ 22 VCU_SDC_StatusWord "{}";
+CM_ BO_ 23 "10Hz
+";
+CM_ SG_ 23 VCU_CAN1_FaultWord "{}";
+CM_ SG_ 23 VCU_CAN2_FaultWord "{}";
+CM_ SG_ 23 VCU_CAN3_FaultWord "{}";
+CM_ BO_ 24 "10Hz
+";
+CM_ SG_ 24 VCU_perAPPS1 "{}
+";
+CM_ SG_ 24 VCU_perAPPS2 "{}";
+CM_ SG_ 24 VCU_perAPPS3 "{}";
+CM_ BO_ 25 "Event
+";
+CM_ SG_ 25 VCU_Git_Commit_DataID "{}
+";
+CM_ SG_ 25 VCU_Git_Commit_Data "{}";
+CM_ BO_ 26 "2Hz";
+CM_ BO_ 27 "Event
+";
+CM_ SG_ 27 VCU_TSON_DV_StatusWord "{}";
+CM_ SG_ 27 VCU_TSON_EV_StatusWord "{}";
+CM_ SG_ 27 VCU_Impl_FaultWord "{}";
+CM_ SG_ 27 VCU_AC_FaultWord "{}";
+CM_ SG_ 27 VCU_TV_FaultWord "{}
+";
+CM_ SG_ 27 VCU_Maxon_Status "{}
+";
+CM_ SG_ 27 TV_Launch_Flag "{}";
+CM_ SG_ 27 TV_Acc_Feedback "{}";
+CM_ SG_ 27 TV_Acc_Status "{}";
+CM_ BO_ 28 "2Hz
+";
+CM_ SG_ 28 VCU_tSoC "{}";
+CM_ BO_ 29 "1Hz
+";
+CM_ SG_ 29 NCU_perCPU "{}";
+CM_ SG_ 29 NCU_perGPU "{}";
+CM_ SG_ 29 NCU_tSoC "{}";
+CM_ SG_ 29 Dat_tTorch "{}";
+CM_ BO_ 30 "5Hz
+";
+CM_ BO_ 31 "1Hz
+";
+CM_ SG_ 31 GPS_Lat "{}";
+CM_ SG_ 31 GPS_Lon "{}";
+CM_ BO_ 35 "Event
+";
+CM_ SG_ 35 Dat_Steady_Flag "{}";
+CM_ SG_ 35 Dat_FaultWord "{}";
+CM_ BO_ 32 "5Hz
+";
+CM_ SG_ 32 MC_ETS "{}";
+CM_ SG_ 32 MC_Ediss_Acc "{}";
+CM_ BO_ 33 "1Hz";
+CM_ SG_ 33 VCU_SDC_ReasonWord "{}";
+CM_ BO_ 20 "5Hz
+";
+CM_ SG_ 20 MC_s_Est "{}";
+CM_ SG_ 36 TV_FB_StatusWord "{}";
+VAL_ 22 VCU_SDC_Sensing_StatusWord 1 "SDC_A" 2 "SDC_B" 4 "SDC_C" 8 "SDC_D" 16 "SDC_E" 32 "SDC_F" ;
+VAL_ 22 VCU_SDC_StatusWord 1 "AMS_ALIVE" 2 "SCAU_ALIVE" 4 "NO_EMERGENCY" 8 "TS_AVAILABLE" 16 "APPS_OK" 32 "VCU_SDC_CLOSED" ;
+VAL_ 23 VCU_CAN1_FaultWord 1 "ERROR_WARNING" 2 "ERROR_PASSIVE" 4 "BUS_OFF" 8 "STUFF_ERROR" 16 "FORM_ERROR" 32 "ACK_ERROR" 64 "BIT_RE_ERROR" 128 "BIT_DO_ERROR" 256 "CRC_ERROR" ;
+VAL_ 23 VCU_CAN2_FaultWord 1 "ERROR_WARNING" 2 "ERROR_PASSIVE" 4 "BUS_OFF" 8 "STUFF_ERROR" 16 "FORM_ERROR" 32 "ACK_ERROR" 64 "BIT_RE_ERROR" 128 "BIT_DO_ERROR" 256 "CRC_ERROR" ;
+VAL_ 23 VCU_CAN3_FaultWord 1 "ERROR_WARNING" 2 "ERROR_PASSIVE" 4 "BUS_OFF" 8 "STUFF_ERROR" 16 "FORM_ERROR" 32 "ACK_ERROR" 64 "BIT_RE_ERROR" 128 "BIT_DO_ERROR" 256 "CRC_ERROR" ;
+VAL_ 27 VCU_TSON_DV_StatusWord 1 "pBRAKE_R" 2 "pBRAKE_L" 4 "ASMS" 8 "DRIVERLESS_PAGE" 16 "ALLOW_DRIVERLESS_TSON" ;
+VAL_ 27 VCU_TSON_EV_StatusWord 1 "pTANK_R_Zero" 2 "pTANK_L_Zero" 4 "pVALVE_L_Zero" 8 "pVALVE_R_Zero" 16 "ASMS_Off" 32 "SW_PageOK" 64 "ALLOW_MANUAL_TSON" ;
+VAL_ 27 VCU_Impl_FaultWord 1 "IMPL_MECH_APPS1" 2 "IMPL_MECH_APPS2" 4 "IMPL_MECH_APPS3" 8 "IMPL_DIFF_APPS12" 16 "IMPL_DIFF_APPS23" 32 "IMPL_DIFF_APPS13" 64 "IMPL_MECH_LOADCELL" 128 "IMPL_A_SW" ;
+VAL_ 27 VCU_AC_FaultWord 1 "T_ECU" 2 "T_MOT_FL" 4 "T_MOT_FR" 8 "T_MOT_RL" 16 "T_MOT_RR" 32 "T_INV" 64 "T_BRAKES" 128 "T_H2O" ;
+VAL_ 27 VCU_TV_FaultWord 1 "TV_BRAKE" 2 "TV_STEERING" 4 "TV_VELOCITY" 8 "TV_ACCELERATION" 16 "TV_YAW_RATE" 32 "TV_MOTOR_F" 64 "TV_MOTOR_R" 128 "TV_HV" ;
+VAL_ 33 VCU_SDC_ReasonWord 1 "AMS_ALIVE" 2 "SCAU_ALIVE" 4 "NO_EMERGENCY" 8 "TS_AVAILABLE" 16 "APPS_OK" 32 "VCU_SDC_CLOSED" ;
+VAL_ 36 TV_FB_StatusWord 1 "ACC_ACTIVE" 2 "Vx_EST" 4 "Vx_OFF" 8 "C_BRAKE_ACTIVE" 16 "A_STEERING_ACTIVE" 32 "C_MOT_F_ACTIVE" 64 "C_MOT_R_ACTIVE" 128 "GO_UP_FUCSIA" ;
+SIG_VALTYPE_ 31 GPS_Lat : 1;
+SIG_VALTYPE_ 31 GPS_Lon : 1;
+
