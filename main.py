@@ -7,14 +7,6 @@ from test import get_name_from_CAN0
 SIGNAL_BIBLE_FILE = "Signal_Bible_DP17.xlsx"
 SIGNAL_SHEET = "Signal_Bible"
 
-
-
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
 def open_signal_bible(file_name, sheet_name):
     wb = xl.load_workbook(file_name)
     ws = wb[sheet_name]
