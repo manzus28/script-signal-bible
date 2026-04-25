@@ -1,8 +1,8 @@
 import openpyxl as xl
 import cantools as can
 
-import test
 from test import get_name_from_CAN0
+from test import db
 
 SIGNAL_BIBLE_FILE = "Signal_Bible_DP17.xlsx"
 SIGNAL_SHEET = "Signal_Bible"
@@ -26,6 +26,25 @@ def access_signal_name(work_sheet):
         for signal_name in signal_cell_tu:
             signal_names_array.append(signal_name.value)
     return signal_names_array
+
+def signal_not_in_sheet(signals_in_bible, signal_name_CAN0):
+    for signal_in_CAN in signal_name_CAN0:
+        if signal_in_CAN not in signals_in_bible:
+            print("not found: " + signal_in_CAN)
+
+def signal_not_in_can(signals_in_bible, signal_name_CAN0):
+    for signal_in_sheet in signal_bible_names:
+        if signal_in_sheet not in signal_name_CAN0:
+            print("not found: " + signal_in_sheet)
+
+def is_equal_or_null(signal_from_CAN, signal_message, signal_sheet_name, signal_sheet_scale, signal_sheet_offset, signal_sheet_min, signal_sheet_max, signal_sheet_source):
+    if signal_from_CAN in signal_sheet_name:
+        signal_index = signal_sheet_name.index(signal_from_CAN)
+        scale = signal_sheet_scale[signal_index]
+        if scale != None:
+            if signal_message.get_signal_by_name(signal_from_CAN) != scale:
+                print("wrong scale of " + signal_from_CAN)
+
 
 # inizio + lunghezza + scale + offset + min + max + unità + source
 def access_signal_scale(work_sheet):
@@ -67,7 +86,11 @@ if __name__ == '__main__':
     for signal_scale in signal_bible_scale:
         print(signal_scale)
     signal_name_CAN0 = get_name_from_CAN0()
-    
+
+
+
+
+
 
 
 
