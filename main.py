@@ -1,11 +1,32 @@
+from dataclasses import dataclass
+
 import openpyxl as xl
 import cantools as can
 
 from test import get_name_from_CAN0
-from test import db
 
 SIGNAL_BIBLE_FILE = "Signal_Bible_DP17.xlsx"
 SIGNAL_SHEET = "Signal_Bible"
+
+# Colonne Excel
+NAME_COL = 1
+UNIT_COL = 5
+MINMAX_COL = 10
+OFFSET_COL = 14
+SCALE_COL = 15
+
+START_ROW = 4
+END_ROW = 526
+
+@dataclass
+class SignalData:
+    name: str
+    scale: float | None
+    offset: float | None
+    min_value: float | None
+    max_value: float | None
+    unit: str | None
+    source: str | None
 
 def open_signal_bible(file_name, sheet_name):
     wb = xl.load_workbook(file_name)
@@ -14,7 +35,7 @@ def open_signal_bible(file_name, sheet_name):
 
 def access_signal_name(work_sheet):
     signal_names_array = []
-    for signal_cell_tu in signal_sheet.iter_cols(min_col=1, max_col=1, min_row=4, max_row=526):
+    for signal_cell_tu in signal_sheet.iter_cols(min_col=NAME_COL, max_col=NAME_COL, min_row=START_ROW, max_row=END_ROW):
         for signal_name in signal_cell_tu:
             signal_names_array.append(signal_name.value)
     return signal_names_array
@@ -38,31 +59,31 @@ def is_equal_or_null(signal_from_CAN, signal_message, signal_sheet_name, signal_
                 print("wrong scale of " + signal_from_CAN)
 
 
-# inizio + lunghezza + scale + offset + min + max + unità + source
+# scale + offset + min + max + unità + source
 def access_signal_scale(work_sheet):
     signal_scale_array = []
-    for signal_cell_tu in signal_sheet.iter_cols(min_col=15, max_col=15, min_row=4, max_row=526):
+    for signal_cell_tu in signal_sheet.iter_cols(min_col=SCALE_COL, max_col=SCALE_COL, min_row=4, max_row=526):
         for signal_scale in signal_cell_tu:
             signal_scale_array.append(signal_scale.value)
     return signal_scale_array
 
 def access_signal_offset(work_sheet):
     signal_offset_array = []
-    for signal_cell_tu in signal_sheet.iter_cols(min_col=14, max_col=14, min_row=4, max_row=526):
+    for signal_cell_tu in signal_sheet.iter_cols(min_col=OFFSET_COL, max_col=OFFSET_COL, min_row=4, max_row=526):
         for signal_offset in signal_cell_tu:
             signal_offset_array.append(signal_offset.value)
     return signal_offset_array
 
 def access_signal_min_max(work_sheet):
     signal_min_max_array = []
-    for signal_cell_tu in signal_sheet.iter_cols(min_col=10, max_col=10, min_row=4, max_row=526):
+    for signal_cell_tu in signal_sheet.iter_cols(min_col=MINMAX_COL, max_col=MINMAX_COL, min_row=4, max_row=526):
         for signal_min_max in signal_cell_tu:
             signal_min_max_array.append(signal_min_max.value)
     return signal_min_max_array
 
 def access_signal_unit(work_sheet):
     signal_unit_array = []
-    for signal_cell_tu in signal_sheet.iter_cols(min_col=5, max_col=5, min_row=4, max_row=526):
+    for signal_cell_tu in signal_sheet.iter_cols(min_col=UNIT_COL, max_col=UNIT_COL, min_row=4, max_row=526):
         for signal_unit in signal_cell_tu:
             signal_unit_array.append(signal_unit.value)
     return signal_unit_array
