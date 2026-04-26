@@ -2,7 +2,6 @@ import openpyxl as xl
 import cantools as can
 
 from test import get_name_from_CAN0
-from test import db
 
 SIGNAL_BIBLE_FILE = "Signal_Bible_DP17.xlsx"
 SIGNAL_SHEET = "Signal_Bible"
@@ -34,8 +33,8 @@ def is_equal_or_null(signal_from_CAN, signal_message, signal_sheet_name, signal_
         signal_index = signal_sheet_name.index(signal_from_CAN)
         scale = signal_sheet_scale[signal_index]
         if scale != None:
-            if signal_message.get_signal_by_name(signal_from_CAN) != scale:
-                print("wrong scale of " + signal_from_CAN)
+            if signal_message.get_signal_by_name(signal_from_CAN).scale != scale:
+               print("wrong scale of " + signal_from_CAN)
 
 
 # inizio + lunghezza + scale + offset + min + max + unità + source
@@ -68,16 +67,16 @@ def access_signal_unit(work_sheet):
     return signal_unit_array
 
 if __name__ == '__main__':
+    can_database = can.database.load_file('CAN0.dbc')
     signal_sheet = open_signal_bible(SIGNAL_BIBLE_FILE,SIGNAL_SHEET )
     signal_bible_names = access_signal_name(signal_sheet)
     signal_bible_scale = access_signal_scale(signal_sheet)
     signal_bible_offset = access_signal_offset(signal_sheet)
     signal_bible_min_max = access_signal_min_max(signal_sheet)
     signal_bible_unit = access_signal_unit(signal_sheet)
-
-    for signal_scale in signal_bible_scale:
-        print(signal_scale)
     signal_name_CAN0 = get_name_from_CAN0()
+    signal_bible_scale[111] = 100
+    is_equal_or_null(signal_name_CAN0[0], can_database.get_message_by_name(signal_name_CAN0[0]), signal_bible_names, signal_bible_scale,None,None,None, None)
 
 
 
