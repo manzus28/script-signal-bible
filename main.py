@@ -3,7 +3,7 @@ from dataclasses import dataclass
 import openpyxl as xl
 import cantools as can
 
-from test import get_name_from_CAN0
+from test import get_from_CAN0
 
 SIGNAL_BIBLE_FILE = "Signal_Bible_DP17.xlsx"
 SIGNAL_SHEET = "Signal_Bible"
@@ -17,16 +17,6 @@ SCALE_COL = 15
 
 START_ROW = 4
 END_ROW = 526
-
-@dataclass
-class SignalData:
-    name: str
-    scale: float | None
-    offset: float | None
-    min_value: float | None
-    max_value: float | None
-    unit: str | None
-    source: str | None
 
 def open_signal_bible(file_name, sheet_name):
     wb = xl.load_workbook(file_name)
@@ -96,11 +86,16 @@ if __name__ == '__main__':
     signal_bible_offset = access_signal_offset(signal_sheet)
     signal_bible_min_max = access_signal_min_max(signal_sheet)
     signal_bible_unit = access_signal_unit(signal_sheet)
-    signal_name_CAN0 = get_name_from_CAN0()
-    signal_bible_scale[111] = 100
-    is_equal_or_null(signal_name_CAN0[0], can_database.get_message_by_name(signal_name_CAN0[0]), signal_bible_names, signal_bible_scale,None,None,None, None)
-
-
+    signal_CAN0 = get_from_CAN0()
+    #signal_bible_scale[111] = 100
+    #is_equal_or_null(signal_name_CAN0[0], can_database.get_message_by_name(signal_name_CAN0[0]), signal_bible_names, signal_bible_scale,None,None,None, None)
+    for signal in signal_CAN0:
+        print(signal.name)
+        print(signal.scale)
+        print(signal.offset)
+        print(signal.min_value)
+        print(signal.max_value)
+        print(signal.unit)
 
 
 
