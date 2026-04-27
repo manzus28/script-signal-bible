@@ -9,6 +9,7 @@ class SignalData:
     min_value: float | None
     max_value: float | None
     unit: str | None
+    source: str | None
 
 
 db = cantools.database.load_file('CAN0.dbc')
@@ -26,5 +27,6 @@ def get_from_CAN0():
             current_signal.min_value = signal.minimum
             current_signal.max_value = signal.maximum
             current_signal.unit = signal.unit
+            current_signal.source = signal.receivers
             signal_data_arr.append(current_signal)
     return signal_data_arr
