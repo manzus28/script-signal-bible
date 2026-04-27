@@ -1,11 +1,10 @@
 
 import openpyxl as xl
-import cantools as can
-
-from test import get_from_CAN0
+import cantools
 
 SIGNAL_BIBLE_FILE = "Signal_Bible_DP17.xlsx"
 SIGNAL_SHEET = "Signal_Bible"
+CAN_FILE_NAME = "CAN0.dbc"
 
 # Colonne Excel
 NAME_COL = 1
@@ -16,6 +15,36 @@ SCALE_COL = 15
 
 START_ROW = 4
 END_ROW = 526
+
+
+class SignalData:
+    name: str
+    scale: float | None
+    offset: float | None
+    min_value: float | None
+    max_value: float | None
+    unit: str | None
+    source: str | None
+
+
+db = cantools.database.load_file(CAN_FILE_NAME)
+
+def get_from_CAN0():
+    signal_data_arr = []
+
+    for msg in db.messages:
+        # message_names.append(msg.name)
+        for signal in msg.signals:
+            current_signal = SignalData()
+            current_signal.name = signal.name
+            current_signal.scale = signal.scale
+            current_signal.offset = signal.offset
+            current_signal.min_value = signal.minimum
+            current_signal.max_value = signal.maximum
+            current_signal.unit = signal.unit
+            current_signal.source = signal.receivers
+            signal_data_arr.append(current_signal)
+    return signal_data_arr
 
 def open_signal_bible(file_name, sheet_name):
     wb = xl.load_workbook(file_name)
@@ -101,7 +130,6 @@ def access_signal_unit(work_sheet):
     return signal_unit_array
 
 if __name__ == '__main__':
-    can_database = can.database.load_file('CAN0.dbc')
     signal_sheet = open_signal_bible(SIGNAL_BIBLE_FILE,SIGNAL_SHEET )
     signal_bible_names = access_signal_name(signal_sheet)
     signal_bible_offset = access_signal_offset(signal_sheet)
