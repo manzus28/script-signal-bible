@@ -1,4 +1,3 @@
-from dataclasses import dataclass
 
 import openpyxl as xl
 import cantools as can
@@ -42,23 +41,29 @@ def signal_not_in_can(signal_in_bible, signal_CAN0):
         return
     print("not found: " + signal_in_bible)
 
-def is_equal_or_null(signal_from_CAN, signal_sheet_name, signal_sheet_scale, signal_sheet_offset, signal_sheet_min_max):
+def is_equal_or_null(signal_from_CAN, signal_sheet_name, signal_sheet_scale, signal_sheet_offset, signal_sheet_min_max, signal_sheet_unit):
     for signal_in_CAN in signal_from_CAN:
         if signal_in_CAN.name in signal_sheet_name:
             index_in_sheet = signal_sheet_name.index(signal_in_CAN.name)
-            if (signal_sheet_scale[index_in_sheet] != None):
+            if (signal_sheet_unit[index_in_sheet] != None and signal_in_CAN.unit != None):
+                if (signal_sheet_unit[index_in_sheet] != signal_in_CAN.unit):
+                    print(signal_in_CAN.name + " unit error")
+                    print(f"in .dbc {signal_in_CAN.unit} VS in signal bible {signal_sheet_unit[index_in_sheet]}")
+            if (signal_sheet_scale[index_in_sheet] != None and signal_in_CAN.scale != None):
                 if (signal_sheet_scale[index_in_sheet] != signal_in_CAN.scale):
                     print(signal_in_CAN.name + " scale error")
-                    print("in .dbc " + signal_in_CAN.scale + " VS " + signal_sheet_scale[index_in_sheet])
-            if (signal_sheet_offset[index_in_sheet] != None):
+                    print(f"in .dbc {signal_in_CAN.scale} VS in signal bible {signal_sheet_scale[index_in_sheet]}")
+            if (signal_sheet_offset[index_in_sheet] != None and signal_in_CAN.offset != None):
                 if (signal_sheet_offset[index_in_sheet] != signal_in_CAN.offset):
                     print(signal_in_CAN.name + " offset error")
-                    print("in .dbc " + signal_in_CAN.offset + " VS " + signal_sheet_offset[index_in_sheet])
+                    print(f"in .dbc {signal_in_CAN.offset} VS in signal bible {signal_sheet_offset[index_in_sheet]}")
             if (signal_sheet_min_max[index_in_sheet] != None and signal_sheet_min_max[index_in_sheet] != "TBD" and signal_in_CAN.min_value != None and signal_in_CAN.max_value != None):
                 CAN_min_max = f"[{signal_in_CAN.min_value} {signal_in_CAN.max_value}]"
-                if (signal_sheet_min_max[index_in_sheet] != CAN_min_max):
+                CAN_min_max_second = f"{{{signal_in_CAN.min_value}, {signal_in_CAN.max_value}}}"
+                CAN_min_max_third = f"[{signal_in_CAN.min_value} +{signal_in_CAN.max_value}]"
+                if (signal_sheet_min_max[index_in_sheet] != CAN_min_max and signal_sheet_min_max[index_in_sheet] != CAN_min_max_second and signal_sheet_min_max[index_in_sheet] != CAN_min_max_third):
                     print(signal_in_CAN.name + " min, max  error")
-                    print("in .dbc " + CAN_min_max + " VS " + signal_sheet_min_max[index_in_sheet])
+                    print("in .dbc " + CAN_min_max + " VS in signal bible " + signal_sheet_min_max[index_in_sheet])
             #if (signal_in_CAN.source):
                 #if (not signal_sheet_name[index_in_sheet].startswith(signal_in_CAN.source[0])):
                     #print(signal_in_CAN.name + " source error")
@@ -102,8 +107,9 @@ if __name__ == '__main__':
     signal_bible_offset = access_signal_offset(signal_sheet)
     signal_bible_scale = access_signal_scale(signal_sheet)
     signal_bible_min_max = access_signal_min_max(signal_sheet)
+    signal_bible_unit = access_signal_unit(signal_sheet)
     signal_CAN0 = get_from_CAN0()
-    is_equal_or_null(signal_CAN0,signal_bible_names,signal_bible_scale,signal_bible_offset,signal_bible_min_max)
+    is_equal_or_null(signal_CAN0,signal_bible_names,signal_bible_scale,signal_bible_offset,signal_bible_min_max, signal_bible_unit)
 
 
 
