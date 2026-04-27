@@ -1,10 +1,10 @@
 
 import openpyxl as xl
 import cantools
+import sys
 
 SIGNAL_BIBLE_FILE = "Signal_Bible_DP17.xlsx"
 SIGNAL_SHEET = "Signal_Bible"
-CAN_FILE_NAME = "CAN0.dbc"
 
 # Colonne Excel
 NAME_COL = 1
@@ -26,8 +26,6 @@ class SignalData:
     unit: str | None
     source: str | None
 
-
-db = cantools.database.load_file(CAN_FILE_NAME)
 
 def get_from_CAN0():
     signal_data_arr = []
@@ -92,7 +90,7 @@ def is_equal_or_null(signal_from_CAN, signal_sheet_name, signal_sheet_scale, sig
                 CAN_min_max_third = f"[{signal_in_CAN.min_value} +{signal_in_CAN.max_value}]"
                 if (signal_sheet_min_max[index_in_sheet] != CAN_min_max and signal_sheet_min_max[index_in_sheet] != CAN_min_max_second and signal_sheet_min_max[index_in_sheet] != CAN_min_max_third):
                     print(signal_in_CAN.name + " min, max  error")
-                    print("in .dbc " + CAN_min_max + " VS in signal bible " + signal_sheet_min_max[index_in_sheet])
+                    print(f"in .dbc {repr(CAN_min_max)} VS in signal bible {repr(signal_sheet_min_max[index_in_sheet])}")
             #if (signal_in_CAN.source):
                 #if (not signal_sheet_name[index_in_sheet].startswith(signal_in_CAN.source[0])):
                     #print(signal_in_CAN.name + " source error")
@@ -130,14 +128,22 @@ def access_signal_unit(work_sheet):
     return signal_unit_array
 
 if __name__ == '__main__':
-    signal_sheet = open_signal_bible(SIGNAL_BIBLE_FILE,SIGNAL_SHEET )
-    signal_bible_names = access_signal_name(signal_sheet)
-    signal_bible_offset = access_signal_offset(signal_sheet)
-    signal_bible_scale = access_signal_scale(signal_sheet)
-    signal_bible_min_max = access_signal_min_max(signal_sheet)
-    signal_bible_unit = access_signal_unit(signal_sheet)
-    signal_CAN0 = get_from_CAN0()
-    is_equal_or_null(signal_CAN0,signal_bible_names,signal_bible_scale,signal_bible_offset,signal_bible_min_max, signal_bible_unit)
+    if len(sys.argv) > 1:
+        dbc_file = sys.argv[1]
+        try:
+            db = cantools.database.load_file(dbc_file)
+        except FileNotFoundError:
+            print(f"Errore: Il file {dbc_file} non esiste.")
+        signal_sheet = open_signal_bible(SIGNAL_BIBLE_FILE,SIGNAL_SHEET )
+        signal_bible_names = access_signal_name(signal_sheet)
+        signal_bible_offset = access_signal_offset(signal_sheet)
+        signal_bible_scale = access_signal_scale(signal_sheet)
+        signal_bible_min_max = access_signal_min_max(signal_sheet)
+        signal_bible_unit = access_signal_unit(signal_sheet)
+        signal_CAN0 = get_from_CAN0()
+        is_equal_or_null(signal_CAN0,signal_bible_names,signal_bible_scale,signal_bible_offset,signal_bible_min_max, signal_bible_unit)
+    else:
+        print("errore: nessun file inserito")
 
 
 
